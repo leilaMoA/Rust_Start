@@ -6,22 +6,14 @@ pub struct Deck(pub Vec<Card>);
 
 impl Deck {
         pub fn new() -> Deck {
-            let values = vec![
-                CardValue::Ace,
-                CardValue::Two,
-                CardValue::Three,
-                CardValue::Four,
-                CardValue::Five,
-                CardValue::Six,
-                CardValue::Seven,
-                CardValue::Eight,
-                CardValue::Nine,
-                CardValue::Ten,
-                CardValue::Jack,
-                CardValue::Queen,
-                CardValue::King,
-                ];
-    
+            let mut values: Vec<CardValue> = Vec::new();
+            for n in 1..11 {
+                values.push(CardValue::Numeral(n));
+            }
+            values.push(CardValue::Jack);
+            values.push(CardValue::Queen);
+            values.push(CardValue::King);
+            
             let mut deck: Vec<Card> = Vec::new();
     
             values.into_iter().for_each(|v| {

@@ -14,16 +14,7 @@ pub enum CardSuit {
 
 #[derive(Debug, Copy, Clone)]
 pub enum CardValue {
-    Ace,
-    Two,
-    Three,
-    Four,
-    Five,
-    Six,
-    Seven,
-    Eight,
-    Nine,
-    Ten,
+    Numeral(u32),
     Jack,
     Queen,
     King,
@@ -39,16 +30,13 @@ impl Card {
 
     pub fn get_score(&self) -> u32 {
         match self.value {
-            CardValue::Ace => 11,
-            CardValue::Two => 2,
-            CardValue::Three => 3,
-            CardValue::Four => 4,
-            CardValue::Five => 5,
-            CardValue::Six => 6,
-            CardValue::Seven => 7,
-            CardValue::Eight => 8,
-            CardValue::Nine => 9,
-            CardValue::Ten => 10,
+            CardValue::Numeral(n) => {
+                if n == 1 {
+                    11
+                } else {
+                    n
+                }
+            }
             _ => 10,
         }
     }
